@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-check-circle"></i> Todo App</h1>
+            <p>Organize your tasks efficiently</p>
+        </header>
+
+        <div class="todo-input-section">
+            <form id="todo-form">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="todo-input" 
+                        placeholder="What needs to be done?"
+                        maxlength="100"
+                        required
+                    >
+                    <button type="submit" id="add-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="todo-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+
+        <div class="todo-stats">
+            <span id="tasks-count">0 tasks</span>
+            <button id="clear-completed" class="clear-btn">Clear completed</button>
+        </div>
+
+        <ul id="todo-list" class="todo-list">
+            <!-- Todo items will be added here dynamically -->
+        </ul>
+
+        <div class="empty-state" id="empty-state">
+            <i class="fas fa-clipboard-list"></i>
+            <p>No tasks yet. Add one above to get started!</p>
+        </div>
+    </div>
+
+    <script src="script_simple.js"></script>
+</body>
+</html> 
