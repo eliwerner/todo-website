@@ -161,6 +161,7 @@ def clear_completed():
     db.commit()
     return '', 204
 
+init_db()
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
