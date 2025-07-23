@@ -62,7 +62,7 @@ showLogin.addEventListener('click', (e) => {
 // AUTH FUNCTIONS
 // =============================
 async function registerUser(username, password) {
-  const response = await fetch('http://localhost:5000/register', {
+  const response = await fetch('https://todo-website-lohn.onrender.com/register', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password })
@@ -71,7 +71,7 @@ async function registerUser(username, password) {
 }
 
 async function loginUser(username, password) {
-  const response = await fetch('http://localhost:5000/login', {
+  const response = await fetch('https://todo-website-lohn.onrender.com/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, password })
@@ -135,7 +135,7 @@ function getAuthHeaders() {
 }
 
 async function fetchTodosFromBackend() {
-  const response = await fetch('http://localhost:5000/todos', {
+  const response = await fetch('https://todo-website-lohn.onrender.com/todos', {
     headers: getAuthHeaders()
   });
   if (response.status === 401) {
@@ -147,7 +147,7 @@ async function fetchTodosFromBackend() {
 }
 
 async function addTodoToBackend(text) {
-  const response = await fetch('http://localhost:5000/todos', {
+  const response = await fetch('https://todo-website-lohn.onrender.com/todos', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
     body: JSON.stringify({ text: text, completed: false })
@@ -156,14 +156,14 @@ async function addTodoToBackend(text) {
 }
 
 async function deleteTodoFromBackend(id) {
-  await fetch(`http://localhost:5000/todos/${id}`, {
+  await fetch(`https://todo-website-lohn.onrender.com/todos/${id}`, {
     method: 'DELETE',
     headers: getAuthHeaders()
   });
 }
 
 async function toggleTodoInBackend(id, completed) {
-  await fetch(`http://localhost:5000/todos/${id}`, {
+  await fetch(`https://todo-website-lohn.onrender.com/todos/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
     body: JSON.stringify({ completed: completed })
@@ -171,7 +171,7 @@ async function toggleTodoInBackend(id, completed) {
 }
 
 async function clearCompletedInBackend() {
-  await fetch('http://localhost:5000/todos/clear_completed', {
+  await fetch('https://todo-website-lohn.onrender.com/todos/clear_completed', {
     method: 'POST',
     headers: getAuthHeaders()
   });
