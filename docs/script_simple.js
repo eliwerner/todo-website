@@ -58,6 +58,21 @@ showLogin.addEventListener('click', (e) => {
   loginForm.style.display = 'block';
 });
 
+// Add logout button to header
+const logoutBtn = document.createElement('button');
+logoutBtn.textContent = 'Logout';
+logoutBtn.className = 'logout-btn';
+logoutBtn.onclick = () => {
+  localStorage.removeItem('sessionToken');
+  sessionToken = null;
+  showAuthUI();
+};
+document.querySelector('header').appendChild(logoutBtn);
+
+// Move logout button to the very bottom of the main container
+const container = document.querySelector('.container');
+container.appendChild(logoutBtn); // Place at the end, underneath all content
+
 // =============================
 // AUTH FUNCTIONS
 // =============================

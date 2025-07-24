@@ -27,6 +27,8 @@ body {
 header {
     text-align: center;
     margin-bottom: 30px;
+    position: relative;
+    padding-right: 0;
 }
 
 header h1 {
@@ -46,6 +48,40 @@ header h1 i {
 header p {
     color: #666;
     font-size: 1.1rem;
+}
+
+.logout-btn {
+    display: block;
+    margin: 32px auto 0 auto;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ffb86b 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 32px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.08);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    position: static;
+    z-index: 10;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(135deg, #ffb86b 0%, #ff6b6b 100%);
+    box-shadow: 0 4px 16px rgba(255, 107, 107, 0.18);
+    transform: translateY(-2px) scale(1.04);
+}
+
+@media (max-width: 600px) {
+    header {
+        padding-right: 70px;
+    }
+    .logout-btn {
+        padding: 8px 18px;
+        font-size: 0.95rem;
+        margin: 24px auto 0 auto;
+    }
 }
 
 .todo-input-section {
@@ -409,3 +445,9 @@ header p {
 #auth-container + .container {
     display: none;
 } 
+
+
+
+
+
+
