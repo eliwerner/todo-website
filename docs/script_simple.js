@@ -134,12 +134,18 @@ function getAuthHeaders() {
   return sessionToken ? { 'Authorization': sessionToken } : {};
 }
 
+function handleUnauthorized() {
+  localStorage.removeItem('sessionToken');
+  sessionToken = null;
+  showAuthUI();
+}
+
 async function fetchTodosFromBackend() {
   const response = await fetch('https://todo-website-lohn.onrender.com/todos', {
     headers: getAuthHeaders()
   });
   if (response.status === 401) {
-    showAuthUI();
+    handleUnauthorized();
     return [];
   }
   const data = await response.json();
@@ -152,6 +158,10 @@ async function addTodoToBackend(text) {
     headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
     body: JSON.stringify({ text: text, completed: false })
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+    return null;
+  }
   return response.json();
 }
 
@@ -160,6 +170,9 @@ async function deleteTodoFromBackend(id) {
     method: 'DELETE',
     headers: getAuthHeaders()
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
 }
 
 async function toggleTodoInBackend(id, completed) {
@@ -168,6 +181,9 @@ async function toggleTodoInBackend(id, completed) {
     headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
     body: JSON.stringify({ completed: completed })
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
 }
 
 async function clearCompletedInBackend() {
@@ -175,6 +191,9 @@ async function clearCompletedInBackend() {
     method: 'POST',
     headers: getAuthHeaders()
   });
+  if (response.status === 401) {
+    handleUnauthorized();
+  }
 }
 
 // =============================
