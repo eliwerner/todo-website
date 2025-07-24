@@ -166,7 +166,7 @@ async function addTodoToBackend(text) {
 }
 
 async function deleteTodoFromBackend(id) {
-  await fetch(`https://todo-website-lohn.onrender.com/todos/${id}`, {
+  const response = await fetch(`https://todo-website-lohn.onrender.com/todos/${id}`, {
     method: 'DELETE',
     headers: getAuthHeaders()
   });
@@ -176,7 +176,7 @@ async function deleteTodoFromBackend(id) {
 }
 
 async function toggleTodoInBackend(id, completed) {
-  await fetch(`https://todo-website-lohn.onrender.com/todos/${id}`, {
+  const response = await fetch(`https://todo-website-lohn.onrender.com/todos/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json', ...getAuthHeaders() },
     body: JSON.stringify({ completed: completed })
@@ -187,7 +187,7 @@ async function toggleTodoInBackend(id, completed) {
 }
 
 async function clearCompletedInBackend() {
-  await fetch('https://todo-website-lohn.onrender.com/todos/clear_completed', {
+  const response = await fetch('https://todo-website-lohn.onrender.com/todos/clear_completed', {
     method: 'POST',
     headers: getAuthHeaders()
   });
